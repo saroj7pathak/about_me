@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!-- Source code: Template by Quackit.com -->
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ICS484 Final Project</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+<!--<style>
+  body {
+    background-image: url('Images/Road4.2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+</style>-->
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <!-- Logo and responsive toggle -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+    </div>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="index.html" style='font-size: 22pt;'>Home</a></li>
+        <li class="active" ><a href="about.html" style='font-size: 22pt;'>About</a></li>
+        <li><a href="traffic.html" style='font-size: 22pt;'>Analysis</a></li>
+        <li><a href="section.html" style='font-size: 22pt;'>Test Sections</a></li>
+        <li><a href="3d.html" style='font-size: 22pt;'>Findings</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+        <!-- /.container -->
+  </nav>
+
+  <!-- Content -->
+<div class="container"> <!--, style="color: white; font-family: 'Oswald', sans-serif; font-size: 20px;">-->
+    <!-- Heading -->
+    <div class="row">
+      <div class="col-lg-12" style ='margin-top: 5%;'>
+        <h1 class="page-header" style='text-align: center;'> U.S. Roads: <small>A look at our roads</small>
+        </h1>
+      </div>
+    </div>
+    <div>
+      <p> This is an explorative project intented to analyze, visualize, and make sense of the data collected by the Department of Transportation's (DoT)
+      <a href="https://infopave.fhwa.dot.gov/">Long Term Pavemenet Program (LTPP)</a>. LTPP is an onging program which aims to
+      collect and research pavement data. <br><br>
+      The Long-Term Pavement Performance Information Management System User Guide can be found
+      <a href='https://infopave.fhwa.dot.gov/InfoPave_Repository/files/LTPP_IMS_USER_GUIDE_2019_V8.pdf'>here.</a>
+      <br><br>
+      Additional information on Federal Highway Administratration's ongoing research efforts can be found
+      <a href='https://highways.dot.gov/research/research-programs/infrastructure/infrastructure-overview'>here.</a>
+      <br><br>
+      Below is a synopsis of LTPP, which this project supports, from the LTPP official brochure.
+      </p>
+      <img src="Images/ltpp_info.JPG" alt="LTPP Info" style='align-items: center;'>
+      <br>
+      <br>
+    </div>
+
+        <!-- Projects Row -->
+        <div class="row">
+            <div class="col-md-6 portfolio-item">
+              <br>
+                <a href="traffic.html">
+                    <img class="img-responsive" src="Images/road.JPG" alt="">
+                </a>
+                <h3>
+                    <a href="traffic.html">A breakdown of our roads</a>
+                </h3>
+                <p> Typically our roads have several layers. The top layer is usually asphalt or cement concrete.
+                    Beneath the surface is the base and subbase, usually asphalt concrete bound, or unbound aggregates.
+                    Beneath the base/subbase layer is the subgrade (soil) layer.
+                </p>
+            </div>
+            <div class="col-md-6 portfolio-item">
+                <h3>
+                    <a href="traffic.html">Data Processing</a>
+                </h3>
+                <p>
+                    The heart of this project is data analysis. In order to have meaningful and plot-able data, the team has to first
+                    sort through massive amounts of data. For example, the table which measures the representative layer thickness of
+                    various sections of highways throughout the country has over 38,000 entries, each entry with a dozen attributes.
+                    <br><br>
+                    Traffic data, likewise, has over 16,000 entries spanning over a 20 year period. To identify the road section with the
+                    most traffic, we crossed referenced yet another database containing over 2,500 entries.
+                    <br><br>
+                    Data processing was done using Python dataframe methods.
+                    <br><br>
+                    Because the scope of the data is so large, we balance analysis efforts between national average and focus studies on specific states.
+                    For obvoiusly reasons, we are interested in roads in Hawaii. Keep in mind the DoT manages federal higways, and
+                    there are only three such roads in the state of Hawaii: H-1, H-2 (201), and H-3. All other roads are maintained by the State and County.
+                    Since the sample size of Hawaii roads is so small, we also explored other states such as California.
+                </p>
+
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Projects Row -->
+        <div class="row">
+            <div class="col-md-6 portfolio-item">
+
+                <h3>
+                    <a href="traffic.html">Visualization</a>
+                </h3>
+              <p>This project is for University of Hawaii at Manoa's Fall 2020 ICS 484, Data Visualization Class. Special thanks to Professor Jason Leigh for all the guidance.
+
+                After obtaining data from the Department of Transportation, we used LTPP's guide book to decipher the meaning of the data.
+
+
+                For data processing, we used Python.
+
+
+                For Visualization, we used <a href= 'https://www.chartjs.org/'>chart.js</a> and <a href= 'https://plotly.com/javascript/'>plotly.js</a> for histogram, line, and pie charts.
+
+
+                Road test section visualization was done using matplotlib, plotly and leaflet in Python, then translated into JS and JSON files. </p>
+              <div class="wrapper">
+                <img class="img-responsive" src="Images/flow%20chart.jpg" alt="">
+                <br>
+              </div>
+            </div>
+
+            <div class="col-md-6 portfolio-item">
+                <a href="traffic.html">
+                  <img class="img-responsive" src="Images/rd_traffic.JPG" alt="">
+              </a>
+              <br>
+                <p style='text-align: center; font-size: 16px;'>Caption of data processing using Python Pandas library</p>
+            </div>
+        </div>
+
+
+        <!-- Projects Row -->
+
+
+    </div>
+    <!-- /.container -->
+
+	<footer>
+	  <div class="footer-blurb">
+	    <div class="container">
+		  <div class="row"></div>
+				<!-- /.row -->
+		</div>
+      </div>
+
+	</footer>
+
+
+    <!-- jQuery -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

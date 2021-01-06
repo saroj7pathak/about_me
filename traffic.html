@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ICS484 Final Project</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+  <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<style>
+  body {
+    text-align: center;
+  }
+
+  #loadingMessage {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Logo and responsive toggle -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="index.html" style='font-size: 22pt;'>Home</a></li>
+        <li><a href="about.html" style='font-size: 22pt;'>About</a></li>
+        <li class="active"><a href="traffic.html" style='font-size: 22pt;'>Analysis</a></li>
+        <li><a href="section.html" style='font-size: 22pt;'>Test Sections</a></li>
+        <li><a href="3d.html" style='font-size: 22pt;'>Findings</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+    <!-- /.container -->
+</nav>
+<br><br>
+<br><br>
+
+                                                          <!-- Page Starts -->
+<h1>Road Integrity</h1>
+<div class="wrapper">
+  <h1>National Road Types</h1>
+  <br><br><br>
+                                                              <!-- Row #1 -->
+  <div class="row">
+    <div class="col-md-6 portfolio-item">
+      <p style="text-align: justify; margin-left: 100px;">This chart comes from LTPP's "TST_L05B" table, which contains data from field and laboratory measurements on
+          material type and thicknesses of the pavement structure layers. The 8 types of classified layers are:
+          Asphalt concrete layer, Bound (treated) base, Bound (treated) subbase, Engineering Fabric, Portland cement
+          concrete layer, Subgrade (untreated), Unbound (granular) base, and Unbound (granular) subbase. For combined
+          layers, the upper-most layer is used. For example, on some AC-surfaced sections with asphalt treated base layers,
+          the combined  layer may be represented as AC. </p>
+
+        <p style="text-align: justify; margin-left: 100px;">As can be seen, asphalt-concrete layer, typically the surface layer, is the most studied layer, and accounts for
+          39% of all studied road sections, followed by untreated subgrade layer and unbound granular base layer.
+          This can be explained by likelihood that rarely are base layers accessed during repair. </p>
+    </div>
+
+    <div class="col-md-6 portfolio-item">
+      <div class="wrapper" style="margin-right: 100px;">
+        <canvas id="pieChart"></canvas>
+      </div>
+    </div>
+  </div>
+  <br><br><br>
+  <hr>
+
+  <div class="row">
+    <h1>Road Types in Hawaii</h1>
+    <br><br><br>
+    <div class="col-md-6 portfolio-item">
+          <canvas id="HawaiiPieChart"></canvas>
+    </div>
+    <div class="col-md-6 portfolio-item" >
+      <br><br><br>
+      <p style='text-align: justify; margin-right: 100px;'>For Hawaii test sections, only 4 types of layers were collected:
+          Asphalt concrete layer, Bound Portland cement concrete layer, and Subgrade (untreated), Unbound (granular) base.</p>
+     <p style='text-align: justify; margin-right: 100px;'>Please note, a road can have an Asphalt-Concrete surface and Subgrade
+        Base at the same time. Asphalt concrete and Portland Cement Concrete are both surface layers, whereas the latter two are sub-base material.</p>
+     <p style='text-align: justify; margin-right: 100px;'> This chart simply shows that among the chosen road sections participating
+        in LTPP's studies, 41% samples were taken from the asphalt-concrete top layer</p>
+    </div>
+  </div>
+  <br><br><br>
+  <hr>                                                       <!-- Row #2 -->
+
+  <div class="row">
+    <h1>Surface Layer Crack Length by State</h1>
+    <div class="col-md-6 portfolio-item" >
+      <br><br><br>
+      <br><br><br>
+      <br><br>
+      <p style='text-align: justify; margin-left: 100px; margin-right: 100px;'>
+        We investigated road section crack lengths by state. "Crack Length" is the reinterpreted cracking data for
+        asphalt-concrete surface pavements based on formulas in the Mechanistic-Empirical Pavement Design Guide.
+        This graph shows the average surface layer crack length for each state. Based on analysis, we found it interesting
+        that the Midwest States -- North Dakota, Minnesota, South Dakota, Indiana, and Wyoming-- seem to have the
+        highest average crack length. Intuitively, this makes sense as those states experience harsh winters. </p>
+
+      <p style='text-align: justify; margin-left: 100px; margin-right: 100px;'>
+        Page 55-57 of the <a href=https://infopave.fhwa.dot.gov/InfoPave_Repository/files/LTPP_IMS_USER_GUIDE_2019_V8.pdf>
+        LTPP User Guide </a> explains exactly how crack length is measured, calculated, and interpreted.
+      </p>
+      <p style='text-align: justify; margin-left: 100px; margin-right: 100px;'>
+        According to the User Guide, a unit for crack length is feet/mile.
+      </p>
+    </div>
+    <div class="col-md-6 portfolio-item" >
+      <iframe width="900" height="600" frameborder="0" scrolling="no" src="//plotly.com/~pnewton/34.embed"></iframe>
+    </div>
+  </div>
+  <br>
+  <hr>
+
+  <div class="row">
+    <h1>Road Age vs. Crack Length for 2019</h1>
+    <br><br><br>
+    <div class="container">
+        <canvas id="AgeVcrack"></canvas>
+    </div>
+    <br>
+   <p style='text-align: justify; margin-left: 100px; margin-right: 100px;'>
+    We wanted to explore the relationship between the age of the road and the crack length on its surface.
+     We combined multiple databases and identified 54 road sections that were measured for crack length in 2019 which
+     also had information on the age of its pavement. Although some older pavements have long crack length, and certain
+     newer pavement have shorter crack length, the correlation is not distinctively obvious. </p>
+    <p style='text-align: justify; margin-left: 100px; margin-right: 100px;'>This may be because an older road received upgrades that we are not aware of. </p>
+  </div>
+  <br>
+  <hr>
+
+  <div class="row">
+    <h1>Road Integrity of Hawaii</h1>
+    <br><br><br>
+    <div class="col-md-6 portfolio-item" >
+        <canvas id="HAgeVcrack"></canvas>
+    </div>
+    <div class="col-md-6 portfolio-item" >
+   <p style='text-align: justify; margin-left: 100px; margin-right: 100px;'>
+    Next, we attempted to examine the correlation between a road section's representation thickness and its crack length.
+    After having performed the analysis above, we realized that we cannot draw conclusions on representative thickness and
+    crack length.</P>
+
+    <p style='text-align: justify; margin-left: 100px; margin-right: 100px;'>
+    Representative thickness is a measure of the test section's thickness at a specific layer, this could be the surface
+    layer, the base, or the sub-base. Whereas the the crack length is only measured at the topmost layer of pavement. </p>
+
+    <p style='text-align: justify; margin-left: 100px; margin-right: 100px;'>
+    Further, the samples of thickness and samples and crack length were collected at different times. If a road section's
+    sub base layer is measured at 20.5 mm in 2005, and surface crack length is measured to be 16" in 2007, we cannot draw
+    any conclusions between the two sets of data.</P>
+
+    <p style='text-align: justify; margin-left: 100px; margin-right: 100px;'>
+    This is another example of LTPP's large collection of inconsistent, and uncorrelated data.
+     </p>
+    </div>
+  </div>
+  <br><br><br>
+  <hr>
+
+
+  <div class="row">
+    <h1>National Traffic Load (Sorted)</h1>
+
+    <div class="col-md-6 portfolio-item">
+      <br><br><br>
+      <br><br><br>
+      <p style='text-align: justify;margin-left: 100px; margin-right: 100px;'>Equivalent single-axle load (ESAL) is the unit used to measure the effects of axle loads on pavement. </p>
+      <p style='text-align: justify;margin-left: 100px; margin-right: 100px;'>
+        By convention, an 18,000-pound single axle is 1.00 ESAL. 1 KESAL is 1,000 ESAL. The KESAL chart comes from LTPP's
+        TRF_ESAL_COMPUTED table, which captures the estimated axle load a lane section experiences in the given year based
+        on traffic monitoring measurements computed using the 1993 AASHTO Guide for Design of Pavement Structures methodolog
+        Data is available for all 50 states, ranging from 1990 to 2019, although not every State collects data every year. </p>
+      <p style='text-align: justify;margin-left: 100px; margin-right: 100px;'> Our analysis shows, on average, states with the heaviest traffic are: Georgia, Arkansas, and Oregon, which is a bit
+        surprising because none of these states has a particularly large population. Upon a closer look, we realized that
+        only 6 years of data are available for Georgia. Since the middle of the year range has more data, we took a closer
+        look at the year 2000, which shows the states with the most traffic are: Indiana, Oregon, and Pennsylvia. Oregon was
+        again among the top 3 in both sample sets, which begs a closer analysis. </p>
+      <p style='text-align: justify;margin-left: 100px; margin-right: 100px;'>
+        More information on the measure of KESAL can be found <a href='https://www.fhwa.dot.gov/reports/tswstudy/TSWwp3.pdf'>
+        here</a>
+      </p>
+    </div>
+
+    <div class="col-md-6 portfolio-item">
+      <br>
+      <iframe width="900" height="600" frameborder="0" scrolling="no" src="//plotly.com/~pnewton/36.embed"></iframe>
+    </div>
+
+  </div>
+  <br><br><br>
+  <hr>
+
+  <div class="row">
+    <h1> California Traffic Loads</h1>
+    <br><br><br>
+    <div class="col-md-6 portfolio-item">
+        <canvas id="CaliforniaChart"style='text-align: justify;margin-left: 45px;'></canvas>
+    </div>
+    <div class="col-md-6 portfolio-item" >
+      <br><br><br>
+      <br><br>
+        <p style='text-align: justify;margin-right: 100px;margin-left: 100px;'> We decided to examine the correlation between time and traffic
+            load for the state of California, since this state has the most data and roads are sample most consistently.
+       </p>
+        <p style='text-align: justify;margin-right: 100px;margin-left: 100px;'> Despite of inconsistency in data, we do see an upward trend in road
+            traffic and time progresses.
+        </p>
+    </div>
+  </div>
+  <br><br><br>
+  <hr>
+
+  <h1>Traffic Load on Roads in Oregon, Arkansas, and California</h1>
+  <br><br><br>
+  <div class="container">
+    <div id='myDiv2'></div>
+    <script src="Charts/Hawaiicrack.js"></script>
+  </div>
+  <p style='text-align: justify; margin-left: 100px; margin-right: 100px;'> We took a closer at datasets for Oregon, Arkansas, and California.
+    We noticed between 1992- 2006, average traffic
+    in Oregon rose steadily and ranked very high nationally. No data is available between 2006-2017, and by 2018, when data
+    is collected again, the traffic measured has significantly dropped. This may be because not all roads in Oregon were
+    tested between 2018 and 2019. Other possible explanations could be that the road sections measured are federal highways.
+    It is possible that new federal or state highways are built to alleviate traffic. </p>
+
+    <div class="row">
+    <br><br><br>
+      <hr>
+
+    <h1>Traffic in Hawaii</h1>
+      <br><br><br>
+    <div class="col-md-6 portfolio-item">
+      <h1>Hawaii Traffic Load by Road ID</h1>
+      <div class="wrapper" style='margin-left: 50px;'>
+        <div id='myDiv1'></div>
+        <script src="Charts/Hawaiicrack.js"></script>
+      </div>
+      <p style='text-align: justify; margin-left: 100px; margin-right: 100px;'>
+        <br>
+        We wanted to see what traffic load for Hawaii looked like. During data processing, we realized that there are only
+        4 test sections in the state of Hawaii: 2 on Big Island, and 2 on Maui. The two test sections on Maui are so closely
+        located they are practically the same section. Further, not every road section is sampled every year.
+        That said, the sample size of test sections in Hawaii is too small to make definitive conclusions.
+      </p>
+
+    </div>
+    <div class="col-md-6 portfolio-item" style="font-size: 27px;">
+      <h1>Hawaii Average Annual Traffic Load</h1>
+      <br><br>
+       <div class="wrapper" style='margin-right: 50px;'>
+            <canvas id="HawaiiAvgTraffic"></canvas>
+        </div>
+        <br><br>
+        <p style='text-align: justify; margin-right: 100px;margin-left: 75px;'> We examined traffic loads in Hawaii over time.
+            We were hoping to see an increasing trend in road traffic in Hawaii, however, since the sample size is so small,
+            we do not have sufficient data to make such a conclusion. </p>
+    </div>
+  </div>
+
+                                                               <!-- Row #3 -->
+
+
+
+  <br>
+</div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="Charts/pieChart.js"></script>
+<script src="Charts/mixChart.js"></script>
+<script src="Charts/HawaiiPieChart.js"></script>
+<script src="Charts/HawaiiAvgTraffic.js"></script>
+<script src="Charts/mixChart2.js"></script>
+<script src="Charts/AgeVcrack.js"></script>
+<script src="Charts/HAgeVcrack.js"></script>
+<script src="Charts/CaliforniaChart.js"></script>
+<script src="Charts/tComparison.js"></script>
+<script src="Charts/nCrackLength.js"></script>
+<script src="Charts/collectedSamples.js"></script>
+
+</html>
